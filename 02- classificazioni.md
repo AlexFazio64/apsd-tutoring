@@ -115,9 +115,9 @@ La memoria distribuita è una memoria locale, ovvero, ogni processore ha la prop
 
 ### Paradigmi di programmazione
 
-#### OpenMP
+#### Posix Threads
 
-OpenMP è un'API per la programmazione parallela su architetture con memoria condivisa. OpenMP è un'API per il linguaggio C, C++ e Fortran. OpenMP è una libreria che permette di scrivere programmi paralleli attraverso l'uso di direttive. Le direttive sono delle istruzioni che vengono interpretate dal compilatore.
+Posix Threads è un'API per la programmazione parallela su architetture con memoria condivisa. Posix Threads è un'API per il linguaggio C. Posix Threads è una libreria che permette di scrivere programmi paralleli attraverso l'uso di funzioni che permettono di creare e gestire i thread.
 
 #### MPI
 
