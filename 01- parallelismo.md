@@ -4,7 +4,7 @@
 
 ### Cos'è un algoritmo?
 
-Un algoritmo è una sequenza fin<ita di istruzioni che, partendo da un insieme di dati iniziali, permette di ottenere un risultato finale in un numero finito di passi.
+Un algoritmo è una sequenza finita di istruzioni che, partendo da un insieme di dati iniziali, permette di ottenere un risultato finale in un numero finito di passi.
 
 ### Cos'è un algoritmo parallelo?
 
