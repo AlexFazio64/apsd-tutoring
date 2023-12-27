@@ -28,13 +28,13 @@ MPI è una libreria di funzioni che permette di scrivere programmi paralleli che
 
 Headers:
 
-```c
+```c++
 #include <mpi.h>
 ```
 
 Bindings:
 
-```c
+```c++
 error = MPI_Xxx(...);
 ```
 
@@ -48,7 +48,7 @@ tutti gli array sono indicizzati da 0 a n-1, dove n è la dimensione dell'array
 
 ### Inizializzazione
 
-```c
+```c++
 MPI_Init(int *argc, char ***argv);
 
 // codice parallelo
@@ -70,19 +70,19 @@ Il comunicatore definisce un insieme di processori. Ogni processore ha un identi
 
 Per ottenere il proprio rank:
 
-```c
+```c++
 int rank = MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 ```
 
 Per ottenere il numero totale di processori:
 
-```c
+```c++
 int size = MPI_Comm_size(MPI_COMM_WORLD, &size);
 ```
 
 ## World Hello World Hello World Hello
 
-```c
+```c++
 #include <mpi.h>
 
 int main(int argc, char **argv){
@@ -154,7 +154,7 @@ Per una comunicazione bloccante, il mittente invia i dati e si blocca finché il
 
 #### MPI_Send
 
-```c
+```c++
 int MPI_Send(void *buf, int count, MPI_Datatype datatype, int dest, int tag, MPI_Comm comm);
 ```
 
@@ -169,7 +169,7 @@ Quando la chiamata a `MPI_Send` ritorna, i dati nel buffer possono essere sovras
 
 #### MPI_Recv
 
-```c
+```c++
 int MPI_Recv(void *buf, int count, MPI_Datatype datatype, int source, int tag, MPI_Comm comm, MPI_Status *status);
 ```
 
@@ -192,7 +192,7 @@ Una volta completata la chiamata, i dati nel buffer sono stati ricevuti e posson
 
 Le informazioni sul messaggio ricevuto sono salvate in `status` e possono essere recuperate come segue:
 
-```c
+```c++
 MPI_Status status;
 MPI_Recv(..., &status);
 int source = status.MPI_SOURCE;
@@ -205,7 +205,7 @@ printf("Messaggio ricevuto da %d con tag %d\n", source, tag);
 
 La lunghezza del messaggio può essere recuperata da `status`:
 
-```c
+```c++
 int MPI_Get_count(MPI_Status *status, MPI_Datatype datatype, int *count);
 ```
 
@@ -213,7 +213,7 @@ int MPI_Get_count(MPI_Status *status, MPI_Datatype datatype, int *count);
 - `datatype`: tipo di dato ricevuto
 - `count`: numero di elementi ricevuti
 
-```c
+```c++
 int count;
 MPI_Get_count(&status, MPI_INT, &count);
 ```
