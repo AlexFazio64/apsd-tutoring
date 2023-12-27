@@ -131,9 +131,10 @@ int right = rank + 1;
 if (left < 0) left = MPI_PROC_NULL;
 if (right >= size) right = MPI_PROC_NULL;
 
-MPI_Sendrecv(&send_buff, snd_sz, MPI_CHAR, right, send_tag,
-			&recv_buff, rcv_sz, MPI_CHAR, left, rec_tag,
-			MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+MPI_Sendrecv(
+  &send_buff, snd_sz, MPI_CHAR, right, send_tag,
+  &recv_buff, rcv_sz, MPI_CHAR, left, rec_tag,
+  MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 ```
 
 ### MPI_Sendrecv_replace
