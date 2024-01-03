@@ -21,7 +21,7 @@ La comunicazione collettiva è un mezzo di comunicazione che permette di inviare
 
 La funzione `MPI_Barrier` permette di sincronizzare tutti i processori di un gruppo. La funzione blocca l'esecuzione di tutti i processori fino a quando tutti non hanno raggiunto la funzione.
 
-```c
+```c++
 int MPI_Barrier(MPI_Comm comm);
 ```
 
@@ -31,7 +31,7 @@ int MPI_Barrier(MPI_Comm comm);
 
 La funzione `MPI_Bcast` permette di inviare un messaggio da un processore a tutti gli altri processori di un gruppo.
 
-```c
+```c++
 MPI_Bcast(void *buffer, int count, MPI_Datatype datatype, int root, MPI_Comm comm);
 ```
 
@@ -41,13 +41,13 @@ MPI_Bcast(void *buffer, int count, MPI_Datatype datatype, int root, MPI_Comm com
 - `root`: processore che invia il messaggio
 - `comm`: comunicatore
 
-![bcast](bcast.png)
+![bcast](../imgs/bcast.png)
 
 ## Scatter
 
 La funzione `MPI_Scatter` permette di inviare un messaggio da un processore a tutti gli altri processori di un gruppo, ma in questo caso il messaggio viene diviso in parti uguali e inviato a tutti i processori.
 
-```c
+```c++
 MPI_Scatter(void *sendbuf, int sendcount, MPI_Datatype sendtype,
 			void *recvbuf, int recvcount, MPI_Datatype recvtype,
 			int root, MPI_Comm comm);
@@ -61,7 +61,7 @@ La funzione `MPI_Gather` permette di inviare un messaggio da tutti i processori 
 
 Practicamente è l'opposto di `MPI_Scatter`.
 
-```c
+```c++
 MPI_Gather(	void *sendbuf, int sendcount, MPI_Datatype sendtype,
 			void *recvbuf, int recvcount, MPI_Datatype recvtype,
 			int root, MPI_Comm comm);
@@ -73,7 +73,7 @@ MPI_Gather(	void *sendbuf, int sendcount, MPI_Datatype sendtype,
 
 La funzione `MPI_Scatterv` permette di inviare un messaggio da un processore a tutti gli altri processori di un gruppo, ma in questo caso il messaggio può essere diviso in parti di dimensioni diverse e inviato a tutti i processori.
 
-```c
+```c++
 MPI_Scatterv(	void *sendbuf, int *sendcounts, int *displs, MPI_Datatype sendtype,
 				void *recvbuf, int recvcount, MPI_Datatype recvtype,
 				int root, MPI_Comm comm);
@@ -115,7 +115,7 @@ Esiste anche una funzione `MPI_Gatherv` che è l'opposto di `MPI_Scatterv`.
 
 Combina `MPI_Gather` e `MPI_Bcast`. Ogni processore invia un messaggio a tutti gli altri processori.
 
-```c
+```c++
 MPI_Allgather(	void *sendbuf, int sendcount, MPI_Datatype sendtype,
 				void *recvbuf, int recvcount, MPI_Datatype recvtype,
 				MPI_Comm comm);
@@ -132,7 +132,7 @@ MPI_Allgather(	void *sendbuf, int sendcount, MPI_Datatype sendtype,
 
 La funzione `MPI_Alltoall` permette di inviare l'i-esimo elemento di ogni processore al processore i-esimo.
 
-```c
+```c++
 MPI_Alltoall(	void *sendbuf, int sendcount, MPI_Datatype sendtype,
 				void *recvbuf, int recvcount, MPI_Datatype recvtype,
 				MPI_Comm comm);
@@ -148,7 +148,7 @@ La computazione collettiva è un'operazione che coinvolge tutti i processori di 
 
 La funzione `MPI_Reduce` permette di eseguire un'operazione su dati distribuiti.
 
-```c
+```c++
 MPI_Reduce(	void *sendbuf, void *recvbuf, int count, MPI_Datatype datatype,
 			MPI_Op op, int root, MPI_Comm comm);
 ```
