@@ -15,13 +15,13 @@ void *print_message_function( void *ptr );
 
 main()
 {
-     pthread_t thread;
+     pthread_t threadID;
      char *message = "Hello World!";
-     int  iret
+     int  iret;
 
      iret = pthread_create(&threadID, NULL, print_message_function, (void*) message);
 
-     pthread_join(thread, NULL);
+     pthread_join(threadID, NULL);
 
      printf("Thread returns: %d\n", iret);
      exit(0);
