@@ -80,7 +80,7 @@ void *updateGridThread(void *arguments) {
 }
 
 // Parallelized updateGrid function
-void parallelUpdateGrid(type **grid, int rows, int cols, type **out, int num_threads) {
+void parallelUpdateGrid(type *grid, int rows, int cols, type *out, int num_threads) {
   pthread_t threads[num_threads];
   ThreadArgs threadArgs[num_threads];
 
