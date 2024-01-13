@@ -53,6 +53,7 @@ void updateGrid(type **grid, int rows, int cols, type **out) {
 
 type **createGrid(int rows, int cols, bool random) {
   type **grid = (type **)malloc(rows * sizeof(type *));
+  srand(time(NULL));
   for (int i = 0; i < rows; i++) {
     grid[i] = (type *)malloc(cols * sizeof(type));
     for (int j = 0; j < cols; j++)

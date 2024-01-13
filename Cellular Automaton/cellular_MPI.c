@@ -105,6 +105,7 @@ int main(int argc, char **argv) {
   unsigned char *data = NULL;
 
   if (rank == 0) {
+    srand(time(NULL));
     grid = (type *)malloc(sizeof(type) * CELLS);
     out = (type *)malloc(sizeof(type) * CELLS);
     for (int i = 0; i < CELLS; i++)
