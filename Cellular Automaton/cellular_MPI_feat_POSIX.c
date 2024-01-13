@@ -202,7 +202,7 @@ int main(int argc, char **argv) {
                  ROWS * cols_per_proc, MPI_INT, 0, MPI_COMM_WORLD);
 
     // updateGrid(local_grid, ROWS, cols_per_proc, local_updated);
-    parallelUpdateGrid(grid, ROWS, COLS, out, 30);
+    parallelUpdateGrid(grid, ROWS, cols_per_proc, local_updated, 30);
 
     MPI_Gatherv(local_updated, ROWS * cols_per_proc, MPI_INT, out, sendcounts,
                 displs, column, 0, MPI_COMM_WORLD);
