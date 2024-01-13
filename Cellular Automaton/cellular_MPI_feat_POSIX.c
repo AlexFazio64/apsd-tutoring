@@ -65,14 +65,14 @@ void *updateGridThread(void *arguments) {
   for (int i = args->start_row; i < args->end_row; i++) {
     for (int j = 0; j < args->cols; j++) {
       int neighbors = count_neighbors(args->grid, args->rows, args->cols, i, j);
-      neighbors -= args->grid[i * cols + j];
+      neighbors -= args->grid[i * args->cols + j];
 
-      if (args->grid[i * cols + j] && (neighbors < 2 || neighbors > 3))
-        args->out[i * cols + j] = false;
-      else if (!args->grid[i * cols + j] && neighbors == 3)
-        args->out[i * cols + j] = true;
+      if (args->grid[i * args->cols + j] && (neighbors < 2 || neighbors > 3))
+        args->out[i * args->cols + j] = false;
+      else if (!args->grid[i * args->cols + j] && neighbors == 3)
+        args->out[i * args->cols + j] = true;
       else
-        args->out[i * cols + j] = args->grid[i * cols + j];
+        args->out[i * args->cols + j] = args->grid[i * args->cols + j];
     }
   }
 
@@ -101,6 +101,11 @@ void parallelUpdateGrid(type *grid, int rows, int cols, type *out, int num_threa
 
     current_row = threadArgs[i].end_row;
   }
+
+    for (int i = 0; i < num_threads; i++) {
+    pthread_join(threads[i], NULL);
+  }
+}
 
 void swap(type **a, type **b) {
   type *tmp = *a;
