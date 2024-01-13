@@ -9,9 +9,11 @@
 bool running = true;
 void sigint_handler(int sig) { running = false; }
 
+// #define PRINT
+
 #define type bool
-#define ROWS 360
-#define COLS 640
+#define ROWS 720
+#define COLS 1280
 #define MAX_STEPS 200
 #define SCALE 2
 
@@ -114,6 +116,8 @@ void render() {
 }
 
 int main(int argc, char **argv) {
+  double start = clock();
+
   signal(SIGINT, sigint_handler);
   type **grid = createGrid(ROWS, COLS, true);
   type **out = createGrid(ROWS, COLS, false);
@@ -124,13 +128,20 @@ int main(int argc, char **argv) {
   for (int i = 0; i < MAX_STEPS && running; i++) {
     updateGrid(grid, ROWS, COLS, out);
     swap(&grid, &out);
+#ifdef PRINT
     draw2file(grid, i, data);
+#endif
   }
 
   freeGrid(grid, ROWS);
   freeGrid(out, ROWS);
   free(data);
 
+  double end = clock();
+  printf("Time: %f\n", (end - start) / CLOCKS_PER_SEC);
+
+#ifdef PRINT
   render();
+#endif
   return 0;
 }

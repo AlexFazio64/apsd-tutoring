@@ -16,7 +16,7 @@ void sigint_handler(int sig) { running = false; }
 #define ROWS 720
 #define COLS 1280
 #define CELLS ROWS *COLS
-#define MAX_STEPS 1000
+#define MAX_STEPS 200
 #define SCALE 1
 
 int count_neighbors(type *grid, int rows, int cols, int i, int j) {
@@ -135,8 +135,10 @@ int main(int argc, char **argv) {
     displs[i] = i * cols_per_proc;
   }
 
+#ifdef PRINT
   if (rank == 0)
     draw2file_linear(grid, 0, data);
+#endif
 
   for (int i = 0; i < MAX_STEPS && running; i++) {
     MPI_Scatterv(grid, sendcounts, displs, column, local_grid,
