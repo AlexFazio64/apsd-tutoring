@@ -54,6 +54,11 @@ int main(int argc, char **argv) {
   MPI_Scatterv(grid, sendcounts, displs, column, local_grid,
                ROWS * cols_per_proc, MPI_INT, 0, MPI_COMM_WORLD);
 
+  int left = (rank - 1 + size) % size;
+  int right = (rank + 1) % size;
+
+  
+
   // update local_grid
   for (int i = 0; i < ROWS * cols_per_proc; i++)
     local_grid[i] += rank;
